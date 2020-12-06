@@ -36,8 +36,7 @@ app.post("/", function(req, res){
 
     };
     const APIKEY = process.env.API_KEY;
-    console.log(process.env.API_KEY);
-    console.log(APIKEY);
+
     const uniqueAudienceKey = process.env.listId;
     const url = "https://us18.api.mailchimp.com/3.0/lists/"+uniqueAudienceKey;
     const jsonData = JSON.stringify(data);
@@ -56,19 +55,18 @@ app.post("/", function(req, res){
       }
 
         response.on("data", function(data){
-            console.log(JSON.parse(data));
+
         })
     })
 
     request.write(jsonData);
     request.end()
 
-
-    console.log(firstName, lastName, email);
 });
 
 
 app.post("/failure", function(req, res){
+    console.log(res.redirect("/"));
     res.redirect("/");
 });
 
