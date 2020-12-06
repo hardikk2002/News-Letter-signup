@@ -43,10 +43,12 @@ app.post("/", function(req, res){
 
     const options = {
       method: "POST",
-      auth:"hardk:"+APIKEY
+      auth:"hardk:" + APIKEY
     }
 
     const request = https.request(url, options, function(response){
+
+      console.log(response.statusCode);
 
       if (response.statusCode == 200){
         res.sendFile(__dirname + "/success.html");
@@ -66,7 +68,6 @@ app.post("/", function(req, res){
 
 
 app.post("/failure", function(req, res){
-    console.log(res.redirect("/"));
     res.redirect("/");
 });
 
